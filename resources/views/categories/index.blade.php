@@ -8,7 +8,7 @@
 @section('content')
     <div class="home">
         <div class="home_container">
-            <div class="home_background" style="background-image:url({{asset('images/categories.jpg)')}}"></div>
+            <div class="home_background" style="background-image:url({{asset($cat->imagepath)}}"></div>
             <div class="home_content_container">
                 <div class="container">
                     <div class="row">
@@ -61,7 +61,7 @@
                     @foreach($products as $product)
                         <!-- Product -->
                             <div class="product">
-                                <div class="product_image"><img src="{{asset('images/product_8.jpg')}}" alt="{{$product->name}}"></div>
+                                <div class="product_image"><img src="{{asset($product->imagepath)}}" alt="{{$product->name}}"></div>
                                 <div class="product_extra product_sale"><a href="{{route('showCategory',$product->category['alias'])}}">{{$product->category['title']}}</a></div>
                                 <div class="product_content">
                                     <div class="product_title"><a href="{{route('showProduct',['category',$product->id])}}">{{$product->name}}</a></div>

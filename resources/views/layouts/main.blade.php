@@ -37,7 +37,7 @@
                                         <ul>
                                             <li><a href="{{route('showCatAll')}}">Categories</a></li>
                                             <li><a href="{{route('cartIndex')}}">Cart</a></li>
-                                            <li><a href="#">Contact</a></li>
+                                            <li><a href="{{url('contact')}}">Contact</a></li>
                                         </ul>
                                     </li>
                                     <li class="hassubs">
@@ -48,9 +48,9 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="{{url('contact')}}">Contact</a></li>
                                     @if($user_id !== 0)
-                                        <li><a href="{{route('content')}}">Admin menu</a></li>
+                                        <li><a href="{{url('content')}}">Admin menu</a></li>
                                     @endif
                                 </ul>
                             </nav>

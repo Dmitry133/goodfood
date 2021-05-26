@@ -145,7 +145,7 @@
                     @foreach($products as $product)
                         <!-- Product -->
                             <div class="product">
-                                <div class="product_image"><img src="images/product_8.jpg" alt="{{$product->name}}"></div>
+                                <div class="product_image"><img src="{{asset($product->imagepath)}}" alt="{{$product->name}}"></div>
                                 <div class="product_extra product_sale"><a href="{{route('showCategory',$product->category['alias'])}}">{{$product->category['title']}}</a></div>
                                 <div class="product_content">
                                     <div class="product_title"><a href="{{route('showProduct',['category',$product->id])}}">{{$product->name}}</a></div>

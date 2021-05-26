@@ -54,7 +54,7 @@
 @foreach($categories as $category)
     <!-- Product -->
         <div class="product">
-            <div class="product_image"><img src="images/product_8.jpg" alt="{{$category->title}}"></div>
+            <div class="product_image"><img src="{{asset($category->imagepath)}}" alt="{{$category->title}}"></div>
             <div class="product_extra product_sale"><a href="{{route('showCategory',$category->alias)}}">{{$category->title}}</a></div>
             <div class="product_content">
                 <div class="product_title"><a href="{{route('showCategory',$category->alias)}}">{{$category->title}}</a></div>

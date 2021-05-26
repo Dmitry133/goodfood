@@ -16,7 +16,7 @@ class MainController extends Controller
      */
     public function index()
     {
-
+        setcookie('cart_id',uniqid());
         $products = Product::orderBy('created_at')->take(8)->get();
         $user_id = 0;
         if (Auth::check())
@@ -25,6 +25,7 @@ class MainController extends Controller
             $user_id=User::find($user_id)->is_admin;
 
         }
+
         return view('home.index',['products'=>$products,'user_id'=>$user_id]);
     }
 

@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="home_content">
-                                <div class="home_title">{{$item->name}}<span>.</span></div>
+                                <div class="home_title">{{$product->name}}<span>.</span></div>
                                 <div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                 <!-- Product Image -->
                 <div class="col-lg-6">
                     <div class="details_image">
-                        <div class="details_image_large"><img src="{{asset('images/product_8.jpg')}}" alt=""><div class="product_extra product_new"><a href="{{route('showCategory',$item->category['title'])}}">{{$item->category['title']}}</a></div></div>
+                        <div class="details_image_large"><img src="{{asset($product->imagepath)}}" alt=""><div class="product_extra product_new"><a href="{{route('showCategory',$product->category['title'])}}">{{$product->category['title']}}</a></div></div>
                         <div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
                         </div>
                     </div>
@@ -42,33 +42,40 @@
                 <!-- Product Content -->
                 <div class="col-lg-6">
                     <div class="details_content">
-                        <div class="details_name" data-id="{{$item->id}}">{{$item->name}}</div>
-                        @if($item->new_price != null)
-                            <div class="details_discount">{{$item->price}} RUB</div>
-                            <div class="details_price">{{$item->new_price}} RUB</div>
+                        <div class="details_name" data-id="{{$product->id}}">{{$product->name}}</div>
+                        @if($product->new_price != null)
+                            <div class="details_discount">{{$product->price}} RUB</div>
+                            <div class="details_price">{{$product->new_price}} RUB</div>
                         @else
-                            <div class="product_price">{{$item->price}} RUB</div>
+                            <div class="product_price">{{$product->price}} RUB</div>
                         @endif
 
                         <!-- In Stock -->
                         <div class="in_stock_container">
                             <div class="availability">Availability:</div>
-                            @if($item->in_stock)
+                            @if($product->in_stock)
                                 <span>Доступен к заказу</span>
                             @else
                                 <span style="color: #dc3545!important;">Нет в наличии</span>
                             @endif
                         </div>
                         <div class="details_text">
-                            <p>{{$item->description}}</p>
+                            <p>{{$product->description}}</p>
                             <div class="row">
-                            <p class="m-3" style="color:black">kCal: {{$item->kCal}}</p>
-                            <p class="m-3" style="color:black">Protein: {{$item->protein}}</p>
-                            <p class="m-3" style="color:black">Fats: {{$item->fats}}</p>
-                            <p class="m-3" style="color:black">Carbohydrates: {{$item->carbohydrates}}</p>
+                            <p class="m-3" style="color:black">kCal: {{$product->kCal}}</p>
+                            <p class="m-3" style="color:black">Protein: {{$product->protein}}</p>
+                            <p class="m-3" style="color:black">Fats: {{$product->fats}}</p>
+                            <p class="m-3" style="color:black">Carbohydrates: {{$product->carbohydrates}}</p>
                             </div>
                         </div>
-
+                        @if($user_id !== 0)
+                        <div class="btn btn-success"><a href="{{url('/prodcreate/edit/'.$product->id.'')}}">Edit Product</a></div>
+                        {!! Form::open(['action'=>['ProdController@destroy',$product->id]]) !!}
+                        {!! Form::hidden('_method','DELETE') !!}
+                        <button type="submit" class="btn btn-danger">DELETE</button>
+                        {!! Form::close() !!}
+                        @endif
+{{--                        <div class="btn btn-danger"><a href="#">Delete Product</a></div>--}}
                         <!-- Product Quantity -->
                         <div class="product_quantity_container">
                             <div class="product_quantity clearfix">
@@ -110,6 +117,8 @@
                 addToCart()
             })
         });
+
+
 
         function addToCart(){
             let id = $('.details_name').data('id')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ class ContentController extends Controller
      */
     public function index()
     {
+        $product = Product::all();
         $user_id = 0;
         if (Auth::check())
         {
@@ -22,7 +24,7 @@ class ContentController extends Controller
             $user_id=User::find($user_id)->is_admin;
 
         }
-        return view('content.index',['user_id'=>$user_id]);
+        return view('content.index',['user_id'=>$user_id,'product'=>$product]);
     }
 
     /**
@@ -32,7 +34,9 @@ class ContentController extends Controller
      */
     public function create()
     {
-        //
+
+        $product = new Product;
+        return view('content.index',['product'=>$product]);
     }
 
     /**
@@ -43,7 +47,18 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $product=new Product;
+        $product->name=$request->productnameform;
+
+        if(!$product->save())
+        {
+            $err=$product->getErrors();
+            return redirect()->action('ContentController@index')->with('errors',$err)->withInput();
+        }
+
+        return redirect()->action('ContentController@index')->with('message',"New topic $product->topicname has been added with id $product->id");
+//        return view('content.index',['product'=>$product]);
     }
 
     /**

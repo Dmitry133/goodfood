@@ -10,11 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-//    public function showCatAll() {
-//        $allCat = new Category();
-//        $allCat - Category::all();
-//        return view('categories.show',['allCat'=>$allCat]);
-//    }
+
     public function getCatAll()
     {
         $user_id = 0;

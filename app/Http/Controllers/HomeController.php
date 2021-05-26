@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,14 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $user_id = 0;
+        if (Auth::check())
+        {
+            $user_id=Auth::id();
+            $user_id=User::find($user_id)->is_admin;
+
+        }
+        $this->middleware('auth',['user_id'=>$user_id]);
     }
 
     /**
@@ -24,6 +32,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_id = 0;
+        if (Auth::check())
+        {
+            $user_id=Auth::id();
+            $user_id=User::find($user_id)->is_admin;
+
+        }
+        return view('home',['user_id'=>$user_id]);
     }
 }

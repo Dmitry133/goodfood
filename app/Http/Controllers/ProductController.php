@@ -21,8 +21,8 @@ class ProductController extends Controller
             $user_id=User::find($user_id)->is_admin;
 
         }
-        $item = Product::where('id',$product_id)->first();
-        return view('product.show',['item'=>$item,'user_id'=>$user_id]);
+        $product = Product::where('id',$product_id)->first();
+        return view('product.show',['product'=>$product,'user_id'=>$user_id]);
     }
 
     public function getCategory(Request $request,$cat_alias){
@@ -84,7 +84,7 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product;
-        return view('product.create',['product'=>$product]);
+        return view('content.index',['product'=>$product]);
     }
 
     /**
@@ -95,7 +95,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product=new Product;
+        $product->name=$request->productnameform;
+        return view('content.index',['product'=>$product]);
     }
 
     /**

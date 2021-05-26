@@ -51,11 +51,12 @@
                         <!-- Name -->
                         <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
                             <div class="cart_item_image">
-                                <div><img src="images/product_8.jpg" alt=""></div>
+{{--                                <div><img src="images/product_8.jpg" alt=""></div>--}}
+                                <div><img src="{{asset($product->attributes->imagepath)}}" alt=""></div>
                             </div>
                             <div class="cart_item_name_container">
-                                <div class="cart_item_name" data-id="{{$product->id}}"><a href="#">{{$product->name}}</a></div>
-{{--                                <div class="cart_item_edit"><a href="#">Edit Product</a></div>--}}
+                                <div class="cart_item_name" data-id="{{$product->id}}"><p>{{$product->name}}</p></div>
+{{--                                <div class="cart_item_edit"><a onclick="{{\Cart::remove($product->id)}}">Remove</a></div>--}}
                             </div>
                         </div>
                         <!-- Price -->
@@ -83,7 +84,7 @@
                 <div class="col">
                     <div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
                         <div class="cart_buttons_right ml-lg-auto">
-                            <div class="button clear_cart_button"><a href="#">Clear cart</a></div>
+                            <div onclick="clearCart" class="button clear_cart_button"><a onclick="{{\Cart::clear()}}">Clear cart</a></div>
                         </div>
                     </div>
                 </div>
@@ -127,40 +128,15 @@
 
 @endsection
 @section('custom_js')
-    <script src="js/cart.js"></script>
-{{--    <script>--}}
-{{--        $(document).ready(function () {--}}
-{{--            $('#quantity_input').change(function (event){--}}
-{{--                event.preventDefault()--}}
-{{--                addToCart()--}}
-{{--            })--}}
-{{--        });--}}
+    <script src="{{asset('js/cart.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.clear_cart_button').click(function (event){
+                event.preventDefault()
+                location.reload();
+            })
+        });
 
-{{--        function addToCart(){--}}
-{{--            let id = $('.cart_item_name').data('id')--}}
-{{--            let qty = parseInt($('#quantity_input').val())--}}
 
-{{--            let total_qty = parseInt($('.cart-qty').text())--}}
-{{--            total_qty += qty--}}
-{{--            $('.cart-qty').text(total_qty)--}}
-
-{{--            $.ajax({--}}
-{{--                url: "{{route('addToCart')}}",--}}
-{{--                type: "POST",--}}
-{{--                data: {--}}
-{{--                    id: id,--}}
-{{--                    qty: qty,--}}
-{{--                },--}}
-{{--                headers: {--}}
-{{--                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-{{--                },--}}
-{{--                success: (data) => {--}}
-{{--                    console.log(data)--}}
-{{--                },--}}
-{{--                error: (data) => {--}}
-{{--                    console.log(data)--}}
-{{--                }--}}
-{{--            });--}}
-{{--        }--}}
-{{--    </script>--}}
+    </script>
 @endsection

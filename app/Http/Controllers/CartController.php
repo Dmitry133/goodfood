@@ -15,7 +15,10 @@ class  CartController extends Controller
     public function addToCart(Request $request){
         $product = Product::where('id', $request->id)->first();
 
-        if(!isset($_COOKIE['cart_id'])) setcookie('cart_id',uniqid());
+        if(!isset($_COOKIE['cart_id']))
+        {
+            setcookie('cart_id',uniqid());
+        }
         $cart_id = $_COOKIE['cart_id'];
         \Cart::session($cart_id);
         \Cart::add([
@@ -23,11 +26,15 @@ class  CartController extends Controller
             'name' => $product->name,
             'price' => $product->new_price ? $product->new_price : $product->price,
             'quantity' => (int) $request->qty,
-//            'attributes' => [
-//                'imagepath' => isset($product->imagepath)
-//            ]
+            'attributes' => [
+                'imagepath'=>$product->imagepath
+            ]
         ]);
         return response()->json(\Cart::getContent());
+    }
+
+    public function clearCart(){
+
     }
 
     /**

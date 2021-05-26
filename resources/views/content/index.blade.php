@@ -1,45 +1,47 @@
 @extends('layouts.main')
 
 @section('content')
-   <div class="container" style="margin-top: 10%">
+
+   <div class="container" style="margin-top: 10%"><div></div>
+       @if(session('errors'))
+           @foreach(session('errors')->all() as $error)
+               <div class="alert alert-danger">
+
+                   {{$error }}<br>
+                   {{session('errors')}};
+               </div>
+           @endforeach
+       @endif
+
+       @if(session('message'))
+           <div class="alert alert-success">
+               {{session('message')}}
+           </div>
+       @endif
        <div class="col-12">
-{{--            {!! Form::model($product, ['action'=>'ProductController@store','method'=>'post','files'=>true,'class'=>'form']) !!}--}}
+           <h2>Create new category</h2>
+            {!! Form::model($category,['action'=>'CatController@store','method'=>'post','files'=>true,'class'=>'form']) !!}
 
            <div class="form-group">
-{{--               {!! Form::label('productnameform','Foodpackage name:') !!}--}}
-{{--               {!! Form::text('productnameform','',['class'=>'form-control']) !!}--}}
+               {!! Form::label('categorytitleform','Category title:') !!}
+               {!! Form::text('categorytitleform','',['class'=>'form-control']) !!}
 
-{{--               {!! Form::label('productbarcodeform','Barcode:') !!}--}}
-{{--               {!! Form::text('productcodeform','',['class'=>'form-control']) !!}--}}
-
-{{--               {!! Form::label('productdescriptionform','Description:') !!}--}}
-{{--               {!! Form::text('productdescriptionform','',['class'=>'form-control']) !!}--}}
+               {!! Form::label('categorydescriptionform','Description:') !!}
+               {!! Form::text('categorydescriptionform','',['class'=>'form-control']) !!}
 
                <div class="form-inline row mt-3">
-                   <label for="productimagepathform" class="m-3">Add Image</label>
-                   <input type="file" name="producteimagepathform" id="productimagepathform" class="col-10">
+                   <label for="categoryimagepathform" class="m-3">Add Image</label>
+                   <input type="file" name="categoryimagepathform" id="categoryimagepathform" class="col-10">
                </div>
 
-{{--               {!! Form::label('productpriceform','Price:') !!}--}}
-{{--               {!! Form::text('productpriceform','',['class'=>'form-control']) !!}--}}
+               {!! Form::label('categoryaliasform','Alias:') !!}
+               {!! Form::text('categoryaliasform','',['class'=>'form-control']) !!}
 
-{{--               {!! Form::label('productkcalform','kCal:') !!}--}}
-{{--               {!! Form::text('productkcalform','',['class'=>'form-control']) !!}--}}
+           </div>
+           {!! Form::submit('Add category',['class'=>'btn btn-primary' ]) !!}
 
-{{--               {!! Form::label('productproteinform','Protein:') !!}--}}
-{{--               {!! Form::text('productproteinform','',['class'=>'form-control']) !!}--}}
-
-{{--               {!! Form::label('productfatsform','fats:') !!}--}}
-{{--               {!! Form::text('productfatsform','',['class'=>'form-control']) !!}--}}
-
-{{--               {!! Form::label('productcarbohydratesform','Carbohydrates:') !!}--}}
-{{--               {!! Form::text('productcarbohydratesform','',['class'=>'form-control']) !!}--}}
-
-
-{{--           </div>--}}
-{{--           {!! Form::submit('Add product',['class'=>'btn btn-primary' ]) !!}--}}
-
-{{--           {!! Form::close() !!}--}}
+           {!! Form::close() !!}
+           <div class="btn btn-success mt-2"><a class="text-dark" href="{{url('prodcreate')}}">Product create</a></div>
        </div>
    </div>
 
