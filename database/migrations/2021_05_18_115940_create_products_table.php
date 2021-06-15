@@ -26,7 +26,15 @@ class CreateProductsTable extends Migration
             $table->integer('protein');
             $table->integer('fats');
             $table->integer('carbohydrates');
+            $table->integer('category_id')->unsigned();;
             $table->timestamps();
+        });
+
+        Schema::table('products', function($table) {
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
         });
     }
 

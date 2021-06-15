@@ -70,8 +70,8 @@
                         </div>
                         @if($user_id !== 0)
                         <div class="btn btn-success"><a href="{{url('/prodcreate/edit/'.$product->id.'')}}">Edit Product</a></div>
-                        {!! Form::open(['action'=>['ProdController@destroy',$product->id]]) !!}
-                        {!! Form::hidden('_method','DELETE') !!}
+                        {!! Form::open(['route'=>['delprod',$product->id]]) !!}
+                        {!! Form::hidden('_method','POST') !!}
                         <button type="submit" class="btn btn-danger">DELETE</button>
                         {!! Form::close() !!}
                         @endif

@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 class CatController extends Controller
 {
+
+
+    public function getCat($cat_alias){
+        $user_id = 0;
+        if (Auth::check())
+        {
+            $user_id=Auth::id();
+            $user_id=User::find($user_id)->is_admin;
+
+        }
+        $category = Category::where('alias',$cat_alias)->first();
+        return view("content.edit",['category'=>$category,'user_id'=>$user_id]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +64,6 @@ class CatController extends Controller
         $category->title=$request->categorytitleform;
         $category->description=$request->categorydescriptionform;
 
-       // $category->imagepath=$request->categoryimagepathform;
         $fname = $request->file('categoryimagepathform');
         if($fname) {
             $original_name = $fname->getClientOriginalName();
@@ -89,7 +101,8 @@ class CatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view("content.edit",['category'=>$category]);
     }
 
     /**
@@ -101,8 +114,28 @@ class CatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->title=$request->categorytitleform;
+        $category->description=$request->categorydescriptionform;
+
+        $fname = $request->file('categoryimagepathform');
+        if($fname) {
+            $original_name = $fname->getClientOriginalName();
+            $fname->move(public_path().'/images', $original_name);
+            $category->imagepath = '/images/' . $original_name;
+        }
+
+        $category->alias=$request->categoryaliasform;
+
+        if(!$category->save())
+        {
+            $err=$category->getErrors();
+            return redirect()->action('CatController@getCat',['cat'=>$category->alias])->with('errors',$err)->withInput();
+        }
+
+        return redirect()->action('CatController@getCat',['cat'=>$category->alias])->with('message',"New category $category->title has been edit with id $category->id");
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -112,6 +145,8 @@ class CatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect(route('home'));
     }
 }

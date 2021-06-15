@@ -20,6 +20,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="btn btn-success"><a href="{{route('editcat',$cat->alias)}}">Edit Category</a></div>
+                {!! Form::open(['route'=>['delcat',$cat->id]]) !!}
+                {!! Form::hidden('_method','POST') !!}
+                <button type="submit" class="btn btn-danger">DELETE</button>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

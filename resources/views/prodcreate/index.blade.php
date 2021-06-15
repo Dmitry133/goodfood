@@ -24,7 +24,7 @@
         <label for="productcategory_idform" class="col-2">Select category</label>
         <select name="productcategory_idform" id="productcategory_idform" class="col-8">
             @foreach($category as $id =>$category)
-                <option value="{{$id}}">{{$category->title}}</option>
+                <option value="{{$id}}">{{$category->title}}-{{$category->id}}</option>
             @endforeach
         </select>
 

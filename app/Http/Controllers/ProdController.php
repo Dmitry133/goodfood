@@ -165,6 +165,6 @@ class ProdController extends Controller
     {
         $product = Product::find($id);
         $product->delete();
-        return redirect('prodcreate');
+        return redirect(route('home'));
     }
 }

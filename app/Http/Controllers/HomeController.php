@@ -32,6 +32,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(!isset($_COOKIE['cart_id']))
+        {
+            setcookie('cart_id',uniqid());
+        }
+        $cart_id = $_COOKIE['cart_id'];
+
         $user_id = 0;
         if (Auth::check())
         {
@@ -39,6 +45,6 @@ class HomeController extends Controller
             $user_id=User::find($user_id)->is_admin;
 
         }
-        return view('home',['user_id'=>$user_id]);
+        return view('home',['user_id'=>$user_id,'cart_id'=>$cart_id]);
     }
 }

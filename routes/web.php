@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', 'MainController@index')->name('home');
 Route::get('/category/{cat}','ProductController@getCategory')->name('showCategory');
@@ -25,14 +26,21 @@ Route::resource('/prodcreate/','ProdController')->name('*','createprod');
 Route::get('/prodcreate/edit/{id}','ProdController@getProduct');
 
 Route::put('/prodcreate/edit/{id}','ProdController@update')->name('editprod');
+Route::post('/prodcreate/edit/{id}','ProdController@destroy')->name('delprod');
+
+Route::get('/content/{cat}','CatController@getCat');
+
+Route::put('/content/{cat}','CatController@update')->name('editcat');
+Route::post('/content/{cat}','CatController@destroy')->name('delcat');
 
 Route::resource('/content/','CatController')->name('*','createcat');
+
+
 
 //Route::resource('/prodcreate/','ProdController')->name('*','editprod');
 //Route::resource('/content/','CatController')->name('*','editcat');
 
 
 
-Auth::routes();
 
 
