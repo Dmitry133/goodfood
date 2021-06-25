@@ -31,8 +31,7 @@
                 <div class="avds_large_container">
                     <div class="avds_large_content">
                         <div class="avds_title">FoodBox's</div>
-                        <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
-                            ultricies metus. Sed nec molestie eros. Sed viver ra velit venenatis fermentum luctus.
+                        <div class="avds_text">FoodBox's это готовые рационы сбалансированной полезной еды с доставкой на дом.
                         </div>
                         <div class="avds_link avds_link_large"><a href="{{route('showCatAll')}}">See More</a></div>
                     </div>
@@ -76,11 +75,10 @@
                     <div class="avds_xl_container clearfix">
                         <div class="avds_xl_background" style="background-image:url(images/avds_xl.jpg)"></div>
                         <div class="avds_xl_content">
-                            <div class="avds_title">Amazing Devices</div>
-                            <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
-                                ultricies metus.
+                            <div class="avds_title">Great taste</div>
+                            <div class="avds_text">Высокое качество и великолепный вкус.
                             </div>
-                            <div class="avds_link avds_xl_link"><a href="categories.html">See More</a></div>
+                            <div class="avds_link avds_xl_link"><a href="{{route('showCatAll')}}">See More</a></div>
                         </div>
                     </div>
                 </div>

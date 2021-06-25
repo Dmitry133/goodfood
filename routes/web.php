@@ -21,6 +21,7 @@ Route::post('/add-to-cart','CartController@addToCart')->name('addToCart');
 Route::get('/category/','CategoryController@getCatAll')->name('showCatAll');
 Route::get('/content/', 'ContentController@index')->name('content');
 Route::resource('/contact/', 'ContactController')->name('*','contact');
+Route::post('/contact', 'FeedbackController@send')->name('contact.send');
 
 Route::resource('/prodcreate/','ProdController')->name('*','createprod');
 

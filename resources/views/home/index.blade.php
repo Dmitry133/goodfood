@@ -17,9 +17,7 @@
                                     <div class="home_slider_content" data-animation-in="fadeIn"
                                          data-animation-out="animate-out fadeOut">
                                         <div class="home_slider_title">Healthy food delivery.</div>
-                                        <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed
-                                            viverra velit venenatis fermentum luctus.
+                                        <div class="home_slider_subtitle">Здоровое питание на каждый день для похудения, поддержания или набора веса с доставкой на дом в Новосибирске.
                                         </div>
                                         <div class="button button_light home_button"><a href="{{route('showCatAll')}}">Shop Now</a></div>
                                     </div>
@@ -39,9 +37,7 @@
                                     <div class="home_slider_content" data-animation-in="fadeIn"
                                          data-animation-out="animate-out fadeOut">
                                         <div class="home_slider_title">Healthy food delivery.</div>
-                                        <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed
-                                            viverra velit venenatis fermentum luctus.
+                                        <div class="home_slider_subtitle">Здоровое питание на каждый день для похудения, поддержания или набора веса с доставкой на дом в Новосибирске
                                         </div>
                                         <div class="button button_light home_button"><a href="{{route('showCatAll')}}">Shop Now</a></div>
                                     </div>
@@ -61,9 +57,7 @@
                                     <div class="home_slider_content" data-animation-in="fadeIn"
                                          data-animation-out="animate-out fadeOut">
                                         <div class="home_slider_title">Healthy food delivery.</div>
-                                        <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed
-                                            viverra velit venenatis fermentum luctus.
+                                        <div class="home_slider_subtitle">Здоровое питание на каждый день для похудения, поддержания или набора веса с доставкой на дом в Новосибирске
                                         </div>
                                         <div class="button button_light home_button"><a href="{{route('showCatAll')}}">Shop Now</a></div>
                                     </div>
@@ -123,8 +117,7 @@
                 <div class="avds_large_container">
                     <div class="avds_large_content">
                         <div class="avds_title">FoodBox's</div>
-                        <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
-                            ultricies metus. Sed nec molestie eros. Sed viver ra velit venenatis fermentum luctus.
+                        <div class="avds_text">FoodBox's это готовые рационы сбалансированной полезной еды с доставкой на дом.
                         </div>
                         <div class="avds_link avds_link_large"><a href="{{route('showCatAll')}}">See More</a></div>
                     </div>
@@ -175,8 +168,7 @@
                         <div class="avds_xl_background" style="background-image:url(images/avds_xl.jpg)"></div>
                         <div class="avds_xl_content">
                             <div class="avds_title">Great taste</div>
-                            <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
-                                ultricies metus.
+                            <div class="avds_text">Высокое качество и великолепный вкус.
                             </div>
                             <div class="avds_link avds_xl_link"><a href="{{route('showCatAll')}}">See More</a></div>
                         </div>

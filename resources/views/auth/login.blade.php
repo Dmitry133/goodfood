@@ -1,3 +1,4 @@
+<?php $user_id = 0; ?>
 @extends('layouts.main')
 
 @section('content')
