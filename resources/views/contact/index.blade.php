@@ -55,7 +55,7 @@
                                 </div>
                                 <div>
                                     <!-- Subject -->
-                                    <label for="contact_company">Subject</label>
+                                    <label for="contact_company">Telephone or Email</label>
                                     <input type="text" id="contact_company" class="contact_input">
                                 </div>
                                 <div>

@@ -52,6 +52,16 @@
                                     <li><a href="{{url('contact')}}">Contact</a></li>
                                     @if($user_id !== 0)
                                         <li><a href="{{url('content')}}">Admin menu</a></li>
+                                        <li>
+                                            <a href="{{ url('/logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
                                     @endif
                                 </ul>
                             </nav>

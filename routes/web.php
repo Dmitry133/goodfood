@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +35,6 @@ Route::put('/content/{cat}','CatController@update')->name('editcat');
 Route::post('/content/{cat}','CatController@destroy')->name('delcat');
 
 Route::resource('/content/','CatController')->name('*','createcat');
-
 
 
 //Route::resource('/prodcreate/','ProdController')->name('*','editprod');

@@ -69,14 +69,12 @@
                             </div>
                         </div>
                         @if($user_id !== 0)
-                        <div class="btn btn-success"><a href="{{url('/prodcreate/edit/'.$product->id.'')}}">Edit Product</a></div>
+                        <div class="buttonadm"><a href="{{url('/prodcreate/edit/'.$product->id.'')}}">Edit Product</a></div>
                         {!! Form::open(['route'=>['delprod',$product->id]]) !!}
                         {!! Form::hidden('_method','POST') !!}
-                        <button type="submit" class="btn btn-danger">DELETE</button>
+                        <div class="mt-2"><button class="buttonadm" style="color: red" type="submit" >Delete product</button></div>
                         {!! Form::close() !!}
                         @endif
-{{--                        <div class="btn btn-danger"><a href="#">Delete Product</a></div>--}}
-                        <!-- Product Quantity -->
                         <div class="product_quantity_container">
                             <div class="product_quantity clearfix">
                                 <span>Qty</span>
